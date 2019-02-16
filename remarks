@@ -1,0 +1,197 @@
+
+
+API ..
+		WeBservice -- interoperability --
+			you can have communication btn independent langs or platforms
+
+		Clinent ---------------------Server
+									Backend
+
+Types --
+	viewsets
+	serializers
+	routers
+	types of forms -- form.Forms model.modelforms
+
+
+	path vs include
+
+
+
+
+
+
+	Backend
+		Requirement --
+			think and clearly mention relationships between models
+		activate env--
+			pip install rest-framework -- api, serializers,viewsets
+			pip install rest-framework-swagger -- ui..
+		startproject
+			startapp
+				model -- relationships add
+				serializers -- python object to json
+
+			project
+				settings.py
+						-- db,register, rest_framework, rest_framework_swagger
+				urls.py
+				init --
+
+
+
+
+		Product
+			--productId
+			--productName
+			--productPrice
+			--productQty
+
+		Vendor
+			--vendorId
+			--vendorName
+			--balance
+			--listOfProducts   -- Product   -- M - M
+
+		Cust
+			--custId
+			--custName
+			--custBalance
+			--custAddress
+			--listOfProducts -- 1-M
+
+		Address
+			pincode
+			city
+			state
+			vendor -- 1-1
+			customer -- 1 - M
+
+
+
+
+
+Emp					Address
+id nm				aid  city 			eid aid
+1  A				101	  P				1  101
+2  B				102	  M				1  102
+					103	  B				1  103
+										2  101
+
+
+
+address
+		id,city,state,pincode,vendor -- pythonside
+		id,city,state,pincode -- dbside
+
+customer
+	id,custName,custAge,custBalance,products---- pythonside
+	id,custName,custAge,custBalance---- dbside
+
+Product
+	id,productName,productprice,productQty,productCat,customer,vendors---- pythonside
+	id, productName,productprice,productQty,productCat,customer---- dbside
+
+Vendor
+	id,vendorName,vendorBalance,address_id,products---- pythonside
+	id,vendorName,vendorBalance,address_id,products---- dbside
+
+vendor_products
+	id  vid  pid
+
+
+curl -X
+GET "http://localhost:8000/api/address/"
+-H "accept: application/json" -H "X-CSRFToken: dlqcxxR60cqjlmiU68DBhN0jORz88k9p2q9o5KlkGQ8H6dkc5sE8UuedIQseEA1V"
+
+
+	curl -X
+	POST "http://localhost:8000/api/address/"
+	-H "accept: application/json" -H "Content-Type: application/json"
+	-H "X-CSRFToken: dlqcxxR60cqjlmiU68DBhN0jORz88k9p2q9o5KlkGQ8H6dkc5sE8UuedIQseEA1V"
+
+	-d "{ \"city\": \"Punennn\", \"pincode\": 123210, \"state\": \"MP\"}"
+
+
+	https://www.getpostman.com/collections/33462096c130e2e712f2
+
+
+
+
+Address
+	http://localhost:8000/api/address/			GET	-- retrive all address
+	http://localhost:8000/api/address/{id}		GET	-- get single address
+	http://localhost:8000/api/address/{id}		DELETE-- DELETE RECORD
+	http://localhost:8000/api/address/			post
+	http://localhost:8000/api/address/			put
+
+Product
+	http://localhost:8000/api/product
+	http://localhost:8000/api/product
+	http://localhost:8000/api/product
+	http://localhost:8000/api/product
+	http://localhost:8000/api/product
+
+Customer
+	http://localhost:8000/api/customer
+	http://localhost:8000/api/customer
+	http://localhost:8000/api/customer
+	http://localhost:8000/api/customer
+	http://localhost:8000/api/customer
+
+Vendor
+	http://localhost:8000/api/vendor
+	http://localhost:8000/api/vendor
+	http://localhost:8000/api/vendor
+	http://localhost:8000/api/vendor
+	http://localhost:8000/api/vendor
+
+
+
+Activate Env
+	pip install -- django/swagger/restframework
+	django-admin startproject x
+	cd startproject
+	manage.py startapp y
+
+	import project in pycharm..
+		make changes in x-settings.py
+						register following apps.
+							y,rest-framework,swagger
+						db changes
+		init -- mysql change
+
+	y--
+		add following files..
+			model.py -- add ur ORM -- fields column
+			serializers.py -- add serializers code..hyperlinked/model
+			views.py -- register viewsets along with model + serializer
+			url.py - configure router changes..
+	X
+		urls.py
+			add y's urls.py -- include
+			add swagger api..
+Command lines --
+	env configure..
+		manage.py makemigratations..
+		manage.py migrate
+		manage.py runserver..
+
+
+
+Test your application...
+	POSTMAN
+	Swagger..
+
+	import...collection/link/folder/curl..
+
+
+
+	requests..
+
+
+
+
+
+
+
